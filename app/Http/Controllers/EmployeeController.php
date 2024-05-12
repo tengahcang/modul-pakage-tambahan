@@ -34,10 +34,11 @@ class EmployeeController extends Controller
         //             ->get();
         // $employees = Employee::all();
         confirmDelete();
+        $positions = Position::all();
         return view('employee.index', [
             'pageTitle' => $pageTitle,
             // 'employees' => $employees
-
+            'positions' => $positions
         ]);
         // return "tes";
     }
@@ -167,9 +168,9 @@ class EmployeeController extends Controller
         }
         $file = $request->file('cv');
         // $namafilelama = 'files/'.$request->filelama;
-        
+
         if ($file != null) {
-            
+
             $originalFilename = $file->getClientOriginalName();
             $encryptedFilename = $file->hashName();
 
